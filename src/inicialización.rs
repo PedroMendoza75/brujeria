@@ -88,7 +88,17 @@ impl Practica{
       }
     }
   }
-
+  impl TipoGuerrero{
+    pub fn to_string (self) -> &'static str{
+      match self {
+        TipoGuerrero::PorDefinir => { return "guerrero por definir"; },
+        TipoGuerrero::Acechador =>  { return "guerrero Acechador"; },
+        TipoGuerrero::Ensoñador =>  { return "guerrero Ensoñador"; },
+        TipoGuerrero::Nagual =>     { return "guerrero Nagual"; },
+      }
+    }
+  }
+      
   impl Guerrero {
     // Constructor
     pub fn new(  
