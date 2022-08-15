@@ -1,5 +1,6 @@
 pub mod definiciones;
-
+#[path ="inicialización.rs"]
+pub mod inicialización;
 #[cfg(test)]
 mod tests {
     use crate::definiciones::*;

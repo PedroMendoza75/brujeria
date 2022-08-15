@@ -1,4 +1,4 @@
-pub(crate) use crate::definiciones::*;
+pub(crate) use super::definiciones::*;
 
 static PEDOS : &'static str = "que si que si, quesilete para tí la perra gorda";
 
