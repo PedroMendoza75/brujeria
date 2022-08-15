@@ -1,5 +1,7 @@
 pub(crate) use super::definiciones::*;
 
+use std::fmt;
+
 static PEDOS : &'static str = "que si que si, quesilete para tí la perra gorda";
 
 
@@ -88,13 +90,14 @@ impl Practica{
       }
     }
   }
-  impl TipoGuerrero{
-    pub fn to_string (self) -> &'static str{
+
+  impl fmt::Display for TipoGuerrero {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
       match self {
-        TipoGuerrero::PorDefinir => { return "guerrero por definir"; },
-        TipoGuerrero::Acechador =>  { return "guerrero Acechador"; },
-        TipoGuerrero::Ensoñador =>  { return "guerrero Ensoñador"; },
-        TipoGuerrero::Nagual =>     { return "guerrero Nagual"; },
+        TipoGuerrero::PorDefinir => write!(f, "guerrero por definir"),
+        TipoGuerrero::Acechador =>  write!(f, "guerrero Acechador"),
+        TipoGuerrero::Ensoñador =>  write!(f, "guerrero Ensoñador"),
+        TipoGuerrero::Nagual =>     write!(f, "guerrero Nagual"),
       }
     }
   }
