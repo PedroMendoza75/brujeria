@@ -1,6 +1,4 @@
-//include!("brujeria_defs.rs");
-
-use crate::brujeria::*;
+pub(crate) use crate::definiciones::*;
 
 static PEDOS : &'static str = "que si que si, quesilete para tí la perra gorda";
 
