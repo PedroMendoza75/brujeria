@@ -7,18 +7,19 @@ pub enum Ambito {
   },
   Nagual,
 }
-enum Direccion {
+pub enum Direccion {
     Norte,
     Sur,
     Este,
     Oeste,
 }
-enum Intensidad {
+#[derive(Debug, PartialEq)]
+pub enum Intensidad {
     Sutil,
     Evidente,
     Abrumador,
 }
-enum Sensacion {
+pub enum Sensacion {
   Indeterminada,
   Temperatura(Intensidad),
   Humedad(Intensidad),
@@ -28,7 +29,7 @@ enum Sensacion {
   Olor(Intensidad),
 }
 
-enum ParteCuerpo{
+pub enum ParteCuerpo{
   Estómago,
   Pecho,
   Cabeza,
@@ -37,11 +38,11 @@ enum ParteCuerpo{
   Canillas,
   Espalda
 }
-struct SensaciónCorporal{
-  parte: ParteCuerpo,
-  sensación: Sensacion,
+pub struct SensaciónCorporal{
+  pub parte: ParteCuerpo,
+  pub sensación: Sensacion,
 }
-enum Emoción{
+pub enum Emoción{
   Fastidio(Intensidad),
   Miedo(Intensidad),
   Asco(Intensidad),
@@ -49,7 +50,8 @@ enum Emoción{
   Contento(Intensidad),
   Triste(Intensidad),
 }
-enum Vicio{
+#[derive(Debug, PartialEq)]
+pub enum Vicio{
   Lujuria(Intensidad),
   Gula(Intensidad),
   Pereza(Intensidad),
@@ -58,19 +60,19 @@ enum Vicio{
   Apego(Intensidad),
   Soberbia(Intensidad),
 }
-enum Disposición {
+pub enum Disposición {
   Bocarriba, 
   Bocabajo, 
   Delado
 }
- enum Postura {
+pub enum Postura {
   Tumbado (Disposición),
   Sentado,
   Encucliyado,
   Fetal,
   Depie,
  }
-enum Elemento {
+ pub enum Elemento {
   Indefinido,
   Viento,
   Agua,
@@ -78,12 +80,12 @@ enum Elemento {
   Tierra,
   Inorgánico,
 }
-struct Posición{
-  dentro_fuera: i32,
-  arriba_abajo: i32,
-  izquierda_derecha: i32,
+pub struct Posición{
+  pub dentro_fuera: i32,
+  pub arriba_abajo: i32,
+  pub izquierda_derecha: i32,
 }
-enum Practica {
+pub enum Practica {
   MarchaDePoder(Direccion) ,
   Recapitulacion,
   Acecho,
@@ -93,7 +95,8 @@ enum Practica {
   PincheTirano,
   PararElMundo,
 }
-enum TipoEnergía {
+#[derive(Debug, PartialEq)]
+pub enum TipoEnergía {
     Natal,
     DeAlimentos,
     Sexual,
@@ -101,7 +104,7 @@ enum TipoEnergía {
     Mental,
     Fina
 }
-enum Aspecto {
+pub enum Aspecto {
   Fisico  {
     sensaciones: SensaciónCorporal,
     postura: Postura,
@@ -113,27 +116,27 @@ enum Aspecto {
   Energético(TipoEnergía),
 }
 
-enum Comportamiento {
+pub enum Comportamiento {
     Estático,
     Vibratorio,
     Errático,
 }
 
-struct PuntoDeEncaje {
-  posición: Posición,
-  intensidad: Intensidad,
-  comportamiento: Comportamiento
+pub struct PuntoDeEncaje {
+  pub posición: Posición,
+  pub intensidad: Intensidad,
+  pub comportamiento: Comportamiento
 }
-struct HuevoLuminoso {
-  color: String,
-  punto_de_encaje: PuntoDeEncaje,
-  energia_predominante: TipoEnergía,
-  cantidad_de_energia: i32,
-  forma: String,
-  compartimentos: i32
+pub struct HuevoLuminoso {
+  pub color: String,
+  pub punto_de_encaje: PuntoDeEncaje,
+  pub energia_predominante: TipoEnergía,
+  pub cantidad_de_energia: i32,
+  pub forma: String,
+  pub compartimentos: i32
 }
 
-enum EtapaCamino{
+pub enum EtapaCamino{
   Inconciencia,
   Curiosidad,
   Aprendiz,
@@ -142,34 +145,34 @@ enum EtapaCamino{
   Vidente,
   HombreDeConocimiento,
 }
-enum TipoGuerrero{
+#[derive(Debug, PartialEq)]
+pub enum TipoGuerrero{
   PorDefinir,
   Acechador,
   Ensoñador,
   Nagual
 }
-struct Conciencia{
-  es_deliverada: bool,
-  es_autoconciente: bool,
-  aspecto: Aspecto,
+pub struct Conciencia{
+  pub es_deliverada: bool,
+  pub es_autoconciente: bool,
+  pub aspecto: Aspecto,
 }
 
-struct Aprendizaje{
-  augurio: String,
-  práctica: Practica,
-  objetivo: Aspecto,
-  ambito: Ambito,
-  contenido: String,
+pub struct Aprendizaje{
+  pub augurio: String,
+  pub práctica: Practica,
+  pub objetivo: Aspecto,
+  pub ambito: Ambito,
+  pub contenido: String,
 }
 
-   
-struct Guerrero {
-  tipo: TipoGuerrero,
-  energía: HuevoLuminoso,
-  vicio: Vicio,
-  predilección: String,
-  etapa: EtapaCamino,
-  aliado: Elemento,
-  conciencia: Conciencia,
-  aprendizaje: Aprendizaje
+pub struct Guerrero {
+  pub tipo: TipoGuerrero,
+  pub energía: HuevoLuminoso,
+  pub vicio: Vicio,
+  pub predilección: String,
+  pub etapa: EtapaCamino,
+  pub aliado: Elemento,
+  pub conciencia: Conciencia,
+  pub aprendizaje: Aprendizaje
 }

@@ -14,13 +14,13 @@ impl Ambito{
 }
 
 impl Practica{
-  fn new () -> Practica{
+  pub fn new () -> Practica{
     Practica::MarchaDePoder(Direccion::Norte)
   }
 }
   
   impl Aprendizaje{
-    fn new (
+    pub fn new (
       augurio: &str,
     ) -> Aprendizaje{
       Aprendizaje{
@@ -34,7 +34,7 @@ impl Practica{
   }
 
   impl Aspecto {
-    fn new () -> Aspecto {
+    pub fn new () -> Aspecto {
       Aspecto::Fisico{
         sensaciones: SensaciónCorporal{ 
           parte: ParteCuerpo::Estómago, 
@@ -47,7 +47,7 @@ impl Practica{
   }
 
   impl Posición{
-    fn new () -> Posición{
+    pub fn new () -> Posición{
       Posición{
         dentro_fuera:0,
         arriba_abajo:0,
@@ -57,7 +57,7 @@ impl Practica{
   }
       
   impl HuevoLuminoso  {
-    fn new () -> HuevoLuminoso {
+    pub fn new () -> HuevoLuminoso {
       HuevoLuminoso{
         color: "blanco".to_string(),
         punto_de_encaje: PuntoDeEncaje{
@@ -74,13 +74,13 @@ impl Practica{
   }
 
   impl Vicio{
-    fn new () -> Vicio{
+    pub fn new () -> Vicio{
       Vicio::Pereza(Intensidad::Evidente)
      }
   }
 
   impl Conciencia {
-    fn new () -> Conciencia{ 
+    pub fn new () -> Conciencia{ 
       Conciencia { 
         es_deliverada: false,
         es_autoconciente: false, 
@@ -91,7 +91,7 @@ impl Practica{
 
   impl Guerrero {
     // Constructor
-    fn new(  
+    pub fn new(  
       vicio: Vicio, 
       conciencia: Conciencia, 
       aprendizaje: Aprendizaje) -> Guerrero {
