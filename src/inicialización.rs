@@ -91,16 +91,16 @@ impl Practica{
     }
   }
 
-  impl fmt::Display for TipoGuerrero {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-      match self {
-        TipoGuerrero::PorDefinir => write!(f, "guerrero por definir"),
-        TipoGuerrero::Acechador =>  write!(f, "guerrero Acechador"),
-        TipoGuerrero::Ensoñador =>  write!(f, "guerrero Ensoñador"),
-        TipoGuerrero::Nagual =>     write!(f, "guerrero Nagual"),
-      }
-    }
-  }
+  // impl fmt::Display for TipoGuerrero {
+  //   fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+  //     match self {
+  //       TipoGuerrero::PorDefinir => write!(f, "guerrero por definir"),
+  //       TipoGuerrero::Acechador =>  write!(f, "guerrero Acechador"),
+  //       TipoGuerrero::Ensoñador =>  write!(f, "guerrero Ensoñador"),
+  //       TipoGuerrero::Nagual =>     write!(f, "guerrero Nagual"),
+  //     }
+  //   }
+  // }
       
   impl Guerrero {
     // Constructor

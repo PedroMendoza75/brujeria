@@ -151,6 +151,7 @@ pub enum TipoGuerrero{
   Ensoñador,
   Nagual
 }
+
 pub struct Conciencia{
   pub es_deliverada: bool,
   pub es_autoconciente: bool,
