@@ -1,6 +1,7 @@
-pub(crate) use super::definiciones::*;
+use std::collections::HashMap;
 
-use std::fmt;
+use crate::{enum_unit::*, interfaces::{Evoluciona, FluyeBase}};
+pub(crate) use super::estructuras::*;
 
 static PEDOS : &'static str = "que si que si, quesilete para tí la perra gorda";
 
@@ -21,102 +22,127 @@ impl Practica{
   }
 }
   
-  impl Aprendizaje{
-    pub fn new (
-      augurio: &str,
-    ) -> Aprendizaje{
-      Aprendizaje{
-        augurio: augurio.to_string(),
-        práctica: Practica::new(), 
-        objetivo: Aspecto::new(),
-        ambito: Ambito::new( ),
-        contenido: String::new(),
-      }
+impl Aprendizaje{
+  pub fn new (
+    augurio: &str,
+  ) -> Aprendizaje{
+    Aprendizaje{
+      augurio: augurio.to_string(),
+      práctica: Practica::new(), 
+      objetivo: AspectoPersonal::new(),
+      ambito: Ambito::new( ),
+      contenido: String::new(),
     }
   }
+}
+impl Sensacion{
+  pub fn new ( tipo: TipoSensacion ) -> Sensacion{
+    Sensacion{
+      tipo,
+      intensidad : Intensidad::Sutil
+    }
+  }
+}
 
-  impl Aspecto {
-    pub fn new () -> Aspecto {
-      Aspecto::Fisico{
-        sensaciones: SensaciónCorporal{ 
-          parte: ParteCuerpo::Estómago, 
-          sensación: Sensacion::Indeterminada } ,
-        postura: Postura::Tumbado(Disposición::Bocarriba),
-        limites:(0,0),
-        fuerza:0,
+impl AspectoPersonal {
+  pub fn new () -> AspectoPersonal {
+    AspectoPersonal::Fisico{
+      sensaciones: SensaciónCorporal { 
+        parte: ParteCuerpo::Estómago, 
+        sensación: Sensacion::new(TipoSensacion::Presión) } ,
+      postura: Postura::Tumbado(Disposición::Bocarriba),
+      limites:(0,0),
+      fuerza:0,
+      }
+  }
+}
+
+impl Posición{
+  pub fn new () -> Posición{
+    Posición{
+      dentro_fuera:0,
+      arriba_abajo:0,
+      izquierda_derecha:0,      
+    }
+  }
+}
+    
+impl HuevoLuminoso  {
+  pub fn new () -> HuevoLuminoso {
+    HuevoLuminoso{
+      color: "blanco".to_string(),
+      punto_de_encaje: PuntoDeEncaje{
+        posición: Posición::new(),
+        intensidad:  Intensidad::Sutil,
+        comportamiento: Comportamiento::Estático,
+      },
+      energia_predominante: TipoEnergía::Sexual,
+      cantidad_de_energia: 0,
+      forma: "círculo".to_string(),
+      compartimentos: 0,
+    }
+  }
+}
+
+impl Vicio{
+  pub fn new () -> Vicio{
+    Vicio{
+      tipo: TipoVicio::Pereza,
+      intensidad: Intensidad::Evidente
+    }
+    }
+}
+
+impl Conciencia {
+  pub fn new () -> Conciencia{ 
+    Conciencia { 
+      es_deliverada: false,
+      es_autoconciente: false, 
+      aspecto: AspectoPersonal::new(),
+    }
+  }
+}
+
+// ("aliado",Elemento::new(false,Elemento::Tierra),
+impl  Guerrero { // <T: enum_unitary::Unitary>
+  // Constructor
+  pub fn new(  
+    vicio: Vicio, 
+    conciencia: Conciencia, 
+    aprendizaje: Aprendizaje) -> Guerrero {
+      let mut g = Guerrero {
+        energía: HuevoLuminoso::new(),
+        vicio,
+        predilección: "".to_string(),
+        conciencia,
+        aprendizaje,
+        aspectos_fluidos: HashMap::new(),
+      };
+      g.aspectos_fluidos.insert("etapa".to_string(),Box::new(EtapaCamino::Inconciencia));
+      g.aspectos_fluidos.insert("tipo".to_string(),Box::new(TipoGuerrero::PorDefinir));
+      g
+    }
+  }
+  impl Evoluciona for Guerrero { 
+    fn evolucionar(&mut self, aspecto: String) {
+      match self.aspectos_fluidos.get_mut(&aspecto) {
+        Some(asp) => {
+          asp.avanzar();
         }
-    }
-  }
-
-  impl Posición{
-    pub fn new () -> Posición{
-      Posición{
-        dentro_fuera:0,
-        arriba_abajo:0,
-        izquierda_derecha:0,      
-      }
-    }
-  }
-      
-  impl HuevoLuminoso  {
-    pub fn new () -> HuevoLuminoso {
-      HuevoLuminoso{
-        color: "blanco".to_string(),
-        punto_de_encaje: PuntoDeEncaje{
-          posición: Posición::new(),
-          intensidad: Intensidad::Sutil,
-          comportamiento: Comportamiento::Estático,
-        },
-        energia_predominante: TipoEnergía::Sexual,
-        cantidad_de_energia: 0,
-        forma: "círculo".to_string(),
-        compartimentos: 0,
-      }
-    }
-  }
-
-  impl Vicio{
-    pub fn new () -> Vicio{
-      Vicio::Pereza(Intensidad::Evidente)
-     }
-  }
-
-  impl Conciencia {
-    pub fn new () -> Conciencia{ 
-      Conciencia { 
-        es_deliverada: false,
-        es_autoconciente: false, 
-        aspecto: Aspecto::new(),
-      }
-    }
-  }
-
-  // impl fmt::Display for TipoGuerrero {
-  //   fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-  //     match self {
-  //       TipoGuerrero::PorDefinir => write!(f, "guerrero por definir"),
-  //       TipoGuerrero::Acechador =>  write!(f, "guerrero Acechador"),
-  //       TipoGuerrero::Ensoñador =>  write!(f, "guerrero Ensoñador"),
-  //       TipoGuerrero::Nagual =>     write!(f, "guerrero Nagual"),
-  //     }
-  //   }
-  // }
-      
-  impl Guerrero {
-    // Constructor
-    pub fn new(  
-      vicio: Vicio, 
-      conciencia: Conciencia, 
-      aprendizaje: Aprendizaje) -> Guerrero {
-        Guerrero {
-          tipo: TipoGuerrero::PorDefinir,
-          energía: HuevoLuminoso::new(),
-          vicio,
-          predilección: "".to_string(),
-          etapa: EtapaCamino::Inconciencia,
-          aliado: Elemento::Indefinido,
-          conciencia,
-          aprendizaje,
+        None => {
+          println!("No se encontró el aspecto {}", aspecto);
         }
       }
     }
+    fn involucionar(&mut self, aspecto: String) {
+      match self.aspectos_fluidos.get_mut(&aspecto) {
+        Some(asp) => {
+          asp.retroceder();
+        }
+        None => {
+          println!("No se encontró el aspecto {}", aspecto);
+        }
+      }
+    }
+  }
+
