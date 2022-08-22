@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 enum-iterator = "1.0"
 enum-unitary = "0.5"
+colored = "2.0.0"

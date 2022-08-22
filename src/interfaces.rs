@@ -43,7 +43,7 @@ pub trait Fluye: FluyeBase + EnumUnitary {
         }
       }
     }
-  fn retroceder(&mut self) ->ResultadoFluir {
+  fn retroceder(&mut self) -> ResultadoFluir {
       match previous(self) {
         Some(aspecto_nuevo) => {
           *self = aspecto_nuevo;
@@ -61,18 +61,3 @@ pub trait Fluye: FluyeBase + EnumUnitary {
       }
     }
   }
-
-// #[derive(Debug,PartialEq)]
-// pub struct AspectoFluid<T> {
-//   pub cíclico: bool,
-//   pub aspecto:  Option< dyn enum_unitary:<T> >
-// }
-
-// impl AspectoFluido {
-//   pub fn new(cíclico: bool, aspecto: dyn enum_unitary::EnumUnitary) -> AspectoFluido {
-//     AspectoFluido {
-//       cíclico,
-//       aspecto:Some(aspecto)
-//     }
-//   }
-// }

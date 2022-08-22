@@ -1,7 +1,7 @@
 use enum_unitary::enum_unitary;
 use std::any::Any;
-
 use crate::interfaces::{Fluye,FluyeBase};
+
 macro_rules! impl_fluye {
   ($x:ident, $s:expr) => {
     impl FluyeBase for $x {
@@ -14,6 +14,7 @@ macro_rules! impl_fluye {
     }
   }
 }
+
 enum_unitary! {
   #[derive(Debug, PartialEq)]
   pub enum Direccion {
@@ -23,6 +24,8 @@ enum_unitary! {
     Oeste
   }
 }
+impl_fluye!(Direccion, true);
+
 enum_unitary! {
   #[derive(Debug, PartialEq)]
   pub enum Intensidad {
@@ -54,7 +57,7 @@ enum_unitary! {
     Cabeza
   }
 }
-impl_fluye!(ParteCuerpo, false);
+impl_fluye!(ParteCuerpo, true);
 
 #[derive(Debug)]
 pub enum Emoción{
@@ -120,6 +123,8 @@ enum_unitary! {
       Fina
   }
 }
+impl_fluye!(TipoEnergía, false);
+
 #[derive(Debug, PartialEq)]
 pub enum Comportamiento {
     Estático,
@@ -128,7 +133,7 @@ pub enum Comportamiento {
 }
 
 enum_unitary! {
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Copy)]
   pub enum EtapaCamino{
     Inconciencia,
     Curiosidad,
@@ -142,7 +147,7 @@ enum_unitary! {
 impl_fluye!(EtapaCamino, false);
 
 enum_unitary! {
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Copy)]
   pub enum TipoGuerrero{
     PorDefinir,
     Acechador,
