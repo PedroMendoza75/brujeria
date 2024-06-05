@@ -153,16 +153,16 @@ Guerrero -- Aprendizaje
 Reino -- Peripecia
 
 ' Interface Implementations
-EmociónStr implements Fluye
-Vicio implements Fluye
-PuntoDeEncaje implements FluyeBase
-CuerpoEnergético implements FluyeBase
-Conciencia implements Fluye
-Aprendizaje implements FluyeBase
-Guerrero implements Fluye
-Peripecia implements FluyeBase
-Reino implements FluyeBase
-Fluye extends FluyeBase
+EmociónStr ..> Fluye
+Vicio ..> Fluye
+PuntoDeEncaje ..> FluyeBase
+CuerpoEnergético ..> FluyeBase
+Conciencia ..> Fluye
+Aprendizaje ..> FluyeBase
+Guerrero ..> Fluye
+Peripecia ..> FluyeBase
+Reino ..> FluyeBase
+Fluye ..> FluyeBase
 
 @enduml
 ```
