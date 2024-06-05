@@ -52,7 +52,7 @@ pub trait Fluye: FluyeBase + EnumUnitary {
         None => {
           if !Self::ciclico(){
             *self = Self::first().unwrap();
-             ResultadoFluir::Preocupante
+            ResultadoFluir::Preocupante
           } else {
             *self = Self::last().unwrap(); 
             ResultadoFluir::Plausible
