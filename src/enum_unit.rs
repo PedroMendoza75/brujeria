@@ -157,3 +157,20 @@ enum_unitary! {
 }
 impl_fluye!(TipoGuerrero, false);
 
+enum_unitary! {
+  #[derive(Debug, PartialEq, Eq, Hash)]
+  pub enum Archetype {
+    Innocent,
+    Sage,
+    Explorer,
+    Ruler,
+    Magician,
+    Hero,
+    Outlaw,
+    Lover,
+    Caregiver,
+    Jester,
+    Everyperson,
+    Child
+  }
+}
