@@ -132,37 +132,37 @@ class Reino {
 }
 
 ' Relationships
-EmociónStr *-- "1" Emoción
-EmociónStr *-- "1" Intensidad
-Vicio *-- "1" TipoVicio
-Vicio *-- "1" Intensidad
-PuntoDeEncaje *-- "1" Posición
-PuntoDeEncaje *-- "1" Intensidad
-PuntoDeEncaje *-- "1" Comportamiento
-CuerpoEnergético *-- "1" Color
-CuerpoEnergético *-- "1" PuntoDeEncaje
-CuerpoEnergético *-- "1" TipoEnergía
-Conciencia *-- "1" AspectoPersonal
-Aprendizaje *-- "1" Practica
-Aprendizaje *-- "1" Ambito
-Aprendizaje *-- "1" AspectoPersonal
-Guerrero *-- "1" CuerpoEnergético
-Guerrero *-- "1" Vicio
-Guerrero *-- "1" Conciencia
-Guerrero *-- "1" Aprendizaje
-Reino *-- "*" Peripecia
+EmociónStr -- Emoción
+EmociónStr -- Intensidad
+Vicio -- TipoVicio
+Vicio -- Intensidad
+PuntoDeEncaje -- Posición
+PuntoDeEncaje -- Intensidad
+PuntoDeEncaje -- Comportamiento
+CuerpoEnergético -- Color
+CuerpoEnergético -- PuntoDeEncaje
+CuerpoEnergético -- TipoEnergía
+Conciencia -- AspectoPersonal
+Aprendizaje -- Practica
+Aprendizaje -- Ambito
+Aprendizaje -- AspectoPersonal
+Guerrero -- CuerpoEnergético
+Guerrero -- Vicio
+Guerrero -- Conciencia
+Guerrero -- Aprendizaje
+Reino -- Peripecia
 
 ' Interface Implementations
-EmociónStr ..|> Fluye
-Vicio ..|> Fluye
-PuntoDeEncaje ..|> FluyeBase
-CuerpoEnergético ..|> FluyeBase
-Conciencia ..|> Fluye
-Aprendizaje ..|> FluyeBase
-Guerrero ..|> Fluye
-Peripecia ..|> FluyeBase
-Reino ..|> FluyeBase
-Fluye ..|>  FluyeBase
+EmociónStr implements Fluye
+Vicio implements Fluye
+PuntoDeEncaje implements FluyeBase
+CuerpoEnergético implements FluyeBase
+Conciencia implements Fluye
+Aprendizaje implements FluyeBase
+Guerrero implements Fluye
+Peripecia implements FluyeBase
+Reino implements FluyeBase
+Fluye extends FluyeBase
 
 @enduml
 ```
