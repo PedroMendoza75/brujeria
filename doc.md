@@ -159,7 +159,6 @@ PuntoDeEncaje ..> FluyeBase
 CuerpoEnergético ..> FluyeBase
 Conciencia ..> Fluye
 Aprendizaje ..> FluyeBase
-Guerrero ..> Fluye
 Peripecia ..> FluyeBase
 Reino ..> FluyeBase
 Fluye ..> FluyeBase
