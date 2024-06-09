@@ -15,8 +15,6 @@ mod tests {
     // use crate::estructuras::*;
   #[test]
   fn test_guerrero(){
-    // let mut vc = Some( Intensidad::Evidente);
-    // vc = enum_iterator::next( &vc.unwrap());
     struct AFF{
       pub fff: Box<dyn FluyeBase>
     }
@@ -25,7 +23,7 @@ mod tests {
     print!("kk de la vka {:?} {:?} ", af, p2);
     let mut p3 = AFF{ fff : af};
     p3.fff.retroceder();
-    
+
     let guerrero = Guerrero::new( 
       Vicio::new(),
       Conciencia::new(),

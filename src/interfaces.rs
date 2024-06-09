@@ -11,7 +11,7 @@ pub enum ResultadoFluir {
 }
 
 
-pub trait Evoluciona {
+pub trait Evolución {
   fn evolucionar(&mut self, aspecto: String);
   fn involucionar(&mut self, aspecto: String);
 }

@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use crate::{enum_unit::*, enum_cmplx::*, interfaces::Evoluciona};
+use crate::{enum_unit::*, enum_cmplx::*, interfaces::Evolución};
 pub(crate) use super::estructuras::*;
 use colored::Color;
 
@@ -131,11 +131,6 @@ impl  Guerrero { // <T: enum_unitary::Unitary>
   /// Devuelve una opción de i8, que es la diferencia entre la posición del valor en su enum correspondiente y la posición del aspecto fluido actual
   /// El Tipo de parámetro es un genérico que se debe implementar Copy, Into<usize> y 'static
   ///
-  /// Ejemplo de uso:
-  ///  let guerrero = Guerrero::new( Vicio::new(), Conciencia::new(), Aprendizaje::new( "águila roza el coche"));
-  ///  guerrero.compara_aspecto_fluido("etapa", EtapaCamino::Inconciencia); // Devuelve Some(0)
-  ///  guerrero.compara_aspecto_fluido("etapa", EtapaCamino::HombreDeConocimiento); // Devuelve Some(1)
-  ///  guerrero.compara_aspecto_fluido("tipo", TipoGuerrero::PorDefinir); // Devuelve Some(0)
   pub fn compara_aspecto_fluido<T>(&self, key: &str, val: T) -> Option<i8>
   where
       T: Copy + Into<usize> + 'static,
@@ -164,7 +159,7 @@ impl  Guerrero { // <T: enum_unitary::Unitary>
 }
 
 // Implementar la trait Evoluciona para el struct Guerrero
-impl Evoluciona for Guerrero { 
+impl Evolución for Guerrero { 
   // Función que evoluciona un aspecto fluido
   fn evolucionar(&mut self, aspecto: String) {
     // Buscar el aspecto fluido con la clave dada
